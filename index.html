@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
@@ -101,11 +102,11 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    #pathfinder, #campore, #sibolangit {
+    #pathfinder, #sibolangit {
       background: linear-gradient(to bottom right, #fffbe6, #ffe8b3, #ffd7a0);
       color: #333;
       min-height: 100vh;
-      padding-bottom: 50px;
+      padding-bottom: 80px;
     }
 
     .img-grid {
@@ -129,7 +130,22 @@
       transform: scale(1.05);
     }
 
-    /* posisi sub-subnav di bawah CAMP */
+    .video-link {
+      margin-top: 40px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .video-link a {
+      color: #b85c00;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .video-link a:hover {
+      color: #ff8800;
+    }
+
     .subnav-item {
       position: relative;
     }
@@ -181,9 +197,10 @@
     <p>Organisasi remaja Gereja Advent yang berfokus pada pembentukan karakter, kepemimpinan, dan pelayanan.</p>
   </div>
 
-   <div id="sibolangit" class="container page">
+  <div id="sibolangit" class="container page">
     <h1>Sibolangit - STRIVE</h1>
     <p>Kegiatan STRIVE di Sibolangit memperkuat iman dan persaudaraan antar Pathfinder.</p>
+
     <div class="img-grid">
       <img src="gambar/sibolangit1.jpg" alt="Sibolangit 1">
       <img src="gambar/sibolangit2.jpg" alt="Sibolangit 2">
@@ -191,6 +208,12 @@
       <img src="gambar/sibolangit4.jpg" alt="Sibolangit 4">
       <img src="gambar/sibolangit5.jpg" alt="Sibolangit 5">
       <img src="gambar/sibolangit6.jpg" alt="Sibolangit 6">
+    </div>
+
+    <div class="video-link">
+      <p>Tonton video kegiatan kami di sini 
+        <a href="https://youtu.be/IPVC6WHrOGo?si=BtJSwzJFIvhUIIXl" target="_blank">YouTube: STRIVE - SIBOLANGIT</a>
+      </p>
     </div>
   </div>
 
@@ -231,4 +254,3 @@
   </script>
 </body>
 </html>
-
