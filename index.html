@@ -35,22 +35,23 @@
       color: #ffd700;
     }
 
-    .subnav {
+    .subnav, .sub-subnav {
       display: none;
       background-color: #204d78;
-      padding: 8px 0;
       animation: fadeIn 0.5s ease;
+      position: relative;
     }
 
-    .subnav a {
+    .subnav a, .sub-subnav a {
+      display: block;
       color: #fff;
-      margin: 0 10px;
+      padding: 5px 0;
       text-decoration: none;
       font-size: 14px;
       font-weight: 500;
     }
 
-    .subnav a:hover {
+    .subnav a:hover, .sub-subnav a:hover {
       color: #ffd700;
     }
 
@@ -83,18 +84,6 @@
       box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
     }
 
-    .logo {
-      width: 500px;
-      max-width: 90%;
-      margin-bottom: 10px;
-      transition: transform 0.6s ease, box-shadow 0.6s ease;
-    }
-
-    .logo:hover {
-      transform: scale(1.1);
-      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
-    }
-
     .page {
       display: none;
       opacity: 0;
@@ -112,51 +101,14 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    #pathfinder {
+    #pathfinder, #campore, #sibolangit {
       background: linear-gradient(to bottom right, #fffbe6, #ffe8b3, #ffd7a0);
-      color: #333;
-      min-height: 100vh;
-    }
-
-    #pathfinder h1 {
-      color: #c57b20;
-    }
-
-    #pathfinder p {
-      color: #4d4d4d;
-      font-size: 15px;
-    }
-
-    .pathfinder-img {
-      width: 250px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      transition: transform 0.4s ease;
-    }
-
-    .pathfinder-img:hover {
-      transform: scale(1.05);
-    }
-
-    .slogan {
-      margin-top: 40px;
-      font-size: 22px;
-      font-weight: bold;
-      color: #b85c00;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6);
-    }
-
-    #anggota {
-      background: linear-gradient(to bottom right, #fff8e1, #ffe0b2);
       color: #333;
       min-height: 100vh;
       padding-bottom: 50px;
     }
 
-    .anggota-grid {
+    .img-grid {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -164,31 +116,32 @@
       margin-top: 30px;
     }
 
-    .anggota-card {
-      background-color: white;
+    .img-grid img {
+      width: 250px;
+      height: 180px;
+      object-fit: cover;
       border-radius: 10px;
-      width: 180px;
-      padding: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       transition: transform 0.3s ease;
     }
 
-    .anggota-card:hover {
-      transform: translateY(-5px);
+    .img-grid img:hover {
+      transform: scale(1.05);
     }
 
-    .anggota-card img {
-      width: 100%;
-      border-radius: 10px;
-      height: 180px;
-      object-fit: cover;
+    /* posisi sub-subnav di bawah CAMP */
+    .subnav-item {
+      position: relative;
     }
 
-    .anggota-card p {
-      margin-top: 8px;
-      font-weight: bold;
-      font-size: 15px;
-      color: #b85c00;
+    .sub-subnav {
+      position: absolute;
+      left: 150px;
+      top: 0;
+      background-color: #1d4d8b;
+      padding: 5px 10px;
+      border-radius: 4px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
   </style>
 </head>
@@ -202,11 +155,17 @@
     <div id="subnav" class="subnav">
       <a href="#" onclick="showPage('pathfinder')">Tentang Pathfinder</a>
       <a href="#" onclick="showPage('anggota')">Anggota</a>
+      <div class="subnav-item">
+        <a href="#" onclick="toggleSubSubnav()">Campore ▼</a>
+        <div id="subsubnav" class="sub-subnav">
+          <a href="#" onclick="showPage('sibolangit')">Sibolangit - STRIVE</a>
+        </div>
+      </div>
     </div>
   </nav>
 
   <div id="home" class="container page active">
-    <img src="gambar/IMANUEL_logo.png" class="logo" alt="Logo Gereja Advent">
+    <img src="gambar/IMANUEL_logo.png" width="400" alt="Logo Gereja Advent">
     <h1>Gereja Masehi Advent<br>Hari Ketujuh di Indonesia</h1>
     <h2>IMANUEL BOGOR</h2>
   </div>
@@ -218,34 +177,33 @@
   </div>
 
   <div id="pathfinder" class="container page">
-    <img src="gambar/logo_pf.jpg" class="pathfinder-img" alt="Logo Pathfinder">
     <h1>Pathfinder Immanuel Bogor</h1>
-    <p>Pathfinder adalah organisasi remaja dalam Gereja Advent yang mengajarkan disiplin, pelayanan, dan kepemimpinan.</p>
-    <p>Kegiatan kami meliputi perkemahan, pelatihan keahlian, dan pelayanan masyarakat.</p>
-    <p>Warna lembut kuning, putih, dan oranye melambangkan semangat, kesucian, dan keberanian dalam melayani Tuhan.</p>
-    <div class="slogan">SLOGAN KAMI : IMANUEL BOGOR BERJALAN DENGAN IMAN !!</div>
+    <p>Organisasi remaja Gereja Advent yang berfokus pada pembentukan karakter, kepemimpinan, dan pelayanan.</p>
   </div>
 
-  <div id="anggota" class="container page">
-    <h1>Anggota Pathfinder</h1>
-    <p>Anggota aktif Pathfinder Immanuel Bogor:</p>
-    <div class="anggota-grid">
-      <div class="anggota-card"><img src="gambar/anggota1.png" alt="Anggota 1"><p>Filbert Melvin Ramos Doloksaribu</p></div>
-      <div class="anggota-card"><img src="gambar/anggota2.png" alt="Anggota 2"><p>Daniel Teguh Haholongan Syukur</p></div>
-      <div class="anggota-card"><img src="gambar/anggota3.png" alt="Anggota 3"><p>Grace Scarlet Septiana Tilaar</p></div>
-      <div class="anggota-card"><img src="gambar/anggota4.png" alt="Anggota 4"><p>Joanna Patricia</p></div>
-      <div class="anggota-card"><img src="gambar/anggota5.png" alt="Anggota 5"><p>Daphne Ambrose Rhemrev</p></div>
-      <div class="anggota-card"><img src="gambar/anggota6.png" alt="Anggota 6"><p>Louisa Hitalessy</p></div>
-      <div class="anggota-card"><img src="gambar/anggota7.png" alt="Anggota 7"><p>Dino Padang</p></div>
-      <div class="anggota-card"><img src="gambar/anggota8.png" alt="Anggota 8"><p>Gladys Simarmata</p></div>
-      <div class="anggota-card"><img src="gambar/anggota9.png" alt="Anggota 9"><p>Prassil</p></div>
-      <div class="anggota-card"><img src="gambar/anggota10.png" alt="Anggota 10"><p>Andryv Sinurat</p></div>
-      <div class="anggota-card"><img src="gambar/anggota11.png" alt="Anggota 11"><p>Alvin Padang</p></div>
-      <div class="anggota-card"><img src="gambar/anggota12.png" alt="Anggota 12"><p>Lisa Padang</p></div>
-      <div class="anggota-card"><img src="gambar/anggota13.png" alt="Anggota 13"><p>Carol Simarmata</p></div>
-      <div class="anggota-card"><img src="gambar/anggota14.png" alt="Anggota 14"><p>Shevrilna Tampubolon</p></div>
-      <div class="anggota-card"><img src="gambar/anggota15.png" alt="Anggota 15"><p>Jessie Nababan</p></div>
-      
+  <div id="campore" class="container page">
+    <h1>Campore Pathfinder</h1>
+    <p>Kegiatan besar Pathfinder berupa perkemahan, pelatihan, dan kebersamaan antar klub Pathfinder.</p>
+    <div class="img-grid">
+      <img src="gambar/campore1.jpg" alt="Campore 1">
+      <img src="gambar/campore2.jpg" alt="Campore 2">
+      <img src="gambar/campore3.jpg" alt="Campore 3">
+      <img src="gambar/campore4.jpg" alt="Campore 4">
+      <img src="gambar/campore5.jpg" alt="Campore 5">
+      <img src="gambar/campore6.jpg" alt="Campore 6">
+    </div>
+  </div>
+
+  <div id="sibolangit" class="container page">
+    <h1>Sibolangit - STRIVE</h1>
+    <p>Kegiatan STRIVE di Sibolangit memperkuat iman dan persaudaraan antar Pathfinder.</p>
+    <div class="img-grid">
+      <img src="gambar/sibolangit1.jpg" alt="Sibolangit 1">
+      <img src="gambar/sibolangit2.jpg" alt="Sibolangit 2">
+      <img src="gambar/sibolangit3.jpg" alt="Sibolangit 3">
+      <img src="gambar/sibolangit4.jpg" alt="Sibolangit 4">
+      <img src="gambar/sibolangit5.jpg" alt="Sibolangit 5">
+      <img src="gambar/sibolangit6.jpg" alt="Sibolangit 6">
     </div>
   </div>
 
@@ -278,8 +236,11 @@
       const subnav = document.getElementById('subnav');
       subnav.style.display = (subnav.style.display === 'block') ? 'none' : 'block';
     }
+
+    function toggleSubSubnav() {
+      const subsubnav = document.getElementById('subsubnav');
+      subsubnav.style.display = (subsubnav.style.display === 'block') ? 'none' : 'block';
+    }
   </script>
 </body>
 </html>
-
-
