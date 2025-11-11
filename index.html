@@ -1,9 +1,8 @@
-<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gereja Masehi Advent - Immanuel Bogor</title>
+  <title>Gereja Masehi Advent</title>
   <style>
     body {
       margin: 0;
@@ -11,93 +10,270 @@
       background-color: #204d78;
       color: white;
       text-align: center;
+      overflow-x: hidden;
     }
 
-    header {
-      background-color: #163b5c;
-      padding: 20px;
+    nav {
+      background-color: #17395d;
+      padding: 10px 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     }
 
-    header img {
-      width: 250px;
-      height: auto;
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+    }
+
+    .subnav {
+      display: none;
+      background-color: #204d78;
+      padding: 8px 0;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .subnav a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .subnav a:hover {
+      color: #ffd700;
+    }
+
+    .container {
+      padding-top: 120px;
+      min-height: 70vh;
     }
 
     h1 {
-      margin-top: 10px;
-      font-size: 32px;
+      font-size: 22px;
+      font-weight: 600;
+      margin: 10px 0 0 0;
     }
 
     h2 {
-      color: #ffd966;
-      font-size: 24px;
+      font-size: 16px;
+      font-weight: normal;
+      margin: 5px 0 0 0;
     }
 
-    .slogan {
-      font-size: 20px;
+    .footer {
+      background-color: white;
+      color: #204d78;
+      padding: 15px 0;
       font-weight: bold;
-      margin-top: 10px;
-      color: #ffcc00;
+      font-size: 14px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
     }
 
-    .anggota {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin: 30px;
-      gap: 20px;
+    .logo {
+      width: 500px;
+      max-width: 90%;
+      margin-bottom: 10px;
+      transition: transform 0.6s ease, box-shadow 0.6s ease;
     }
 
-    .anggota img {
-      width: 200px;
-      height: 200px;
-      border-radius: 15px;
-      object-fit: cover;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-      transition: transform 0.3s;
+    .logo:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
     }
 
-    .anggota img:hover {
+    .page {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.7s ease;
+    }
+
+    .active {
+      display: block;
+      opacity: 1;
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    #pathfinder {
+      background: linear-gradient(to bottom right, #fffbe6, #ffe8b3, #ffd7a0);
+      color: #333;
+      min-height: 100vh;
+    }
+
+    #pathfinder h1 {
+      color: #c57b20;
+    }
+
+    #pathfinder p {
+      color: #4d4d4d;
+      font-size: 15px;
+    }
+
+    .pathfinder-img {
+      width: 250px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: transform 0.4s ease;
+    }
+
+    .pathfinder-img:hover {
       transform: scale(1.05);
     }
 
-    footer {
-      background-color: #163b5c;
+    .slogan {
+      margin-top: 40px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #b85c00;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6);
+    }
+
+    #anggota {
+      background: linear-gradient(to bottom right, #fff8e1, #ffe0b2);
+      color: #333;
+      min-height: 100vh;
+      padding-bottom: 50px;
+    }
+
+    .anggota-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .anggota-card {
+      background-color: white;
+      border-radius: 10px;
+      width: 180px;
       padding: 10px;
-      color: #ccc;
-      font-size: 14px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .anggota-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .anggota-card img {
+      width: 100%;
+      border-radius: 10px;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .anggota-card p {
+      margin-top: 8px;
+      font-weight: bold;
+      font-size: 15px;
+      color: #b85c00;
     }
   </style>
 </head>
 <body>
+  <nav>
+    <a href="#" onclick="showPage('home')">Beranda</a>
+    <a href="#" onclick="showPage('tentang')">Tentang</a>
+    <a href="#" onclick="toggleSubnav()">Pathfinder ▼</a>
+    <a href="#" onclick="showPage('kontak')">Kontak</a>
 
-  <header>
-    <img src="gambar/IMANUEL_logo.png" alt="Logo Gereja Advent">
+    <div id="subnav" class="subnav">
+      <a href="#" onclick="showPage('pathfinder')">Tentang Pathfinder</a>
+      <a href="#" onclick="showPage('anggota')">Anggota</a>
+    </div>
+  </nav>
+
+  <div id="home" class="container page active">
+    <img src="gambar/IMANUEL_logo.png" class="logo" alt="Logo Gereja Advent">
+    <h1>Gereja Masehi Advent<br>Hari Ketujuh di Indonesia</h1>
+    <h2>IMANUEL BOGOR</h2>
+  </div>
+
+  <div id="tentang" class="container page">
+    <h1>Tentang Gereja</h1>
+    <p>Gereja Masehi Advent Hari Ketujuh Immanuel Bogor adalah bagian dari jaringan Gereja Advent di Indonesia.</p>
+    <p>Kami berfokus pada iman, pelayanan, dan kasih kepada sesama sesuai ajaran Kristus.</p>
+  </div>
+
+  <div id="pathfinder" class="container page">
+    <img src="gambar/logo_pf.jpg" class="pathfinder-img" alt="Logo Pathfinder">
     <h1>Pathfinder Immanuel Bogor</h1>
-    <h2>Warna lembut kuning, putih, dan oranye melambangkan semangat, kesucian, dan keberanian dalam melayani Tuhan.</h2>
-    <div class="slogan">SLOGAN KAMI: IMANUEL BOGOR BERJALAN DENGAN IMAN!!</div>
-  </header>
+    <p>Pathfinder adalah organisasi remaja dalam Gereja Advent yang mengajarkan disiplin, pelayanan, dan kepemimpinan.</p>
+    <p>Kegiatan kami meliputi perkemahan, pelatihan keahlian, dan pelayanan masyarakat.</p>
+    <p>Warna lembut kuning, putih, dan oranye melambangkan semangat, kesucian, dan keberanian dalam melayani Tuhan.</p>
+    <div class="slogan">SLOGAN KAMI : IMANUEL BOGOR BERJALAN DENGAN IMAN !!</div>
+  </div>
 
-  <main>
-    <section class="anggota">
-      <img src="gambar/anggota1.png" alt="Anggota 1">
-      <img src="gambar/anggota2.png" alt="Anggota 2">
-      <img src="gambar/anggota3.png" alt="Anggota 3">
-      <img src="gambar/anggota4.png" alt="Anggota 4">
-      <img src="gambar/anggota5.png" alt="Anggota 5">
-      <img src="gambar/anggota6.png" alt="Anggota 6">
-      <img src="gambar/anggota7.png" alt="Anggota 7">
-      <img src="gambar/anggota8.png" alt="Anggota 8">
-      <img src="gambar/anggota9.png" alt="Anggota 9">
-      <img src="gambar/anggota10.png" alt="Anggota 10">
-      <img src="gambar/anggota11.png" alt="Anggota 11">
-      <img src="gambar/anggota12.png" alt="Anggota 12">
-    </section>
-  </main>
+  <div id="anggota" class="container page">
+    <h1>Anggota Pathfinder</h1>
+    <p>Anggota aktif Pathfinder Immanuel Bogor:</p>
+    <div class="anggota-grid">
+      <div class="anggota-card"><img src="gambar/anggota1.png" alt="Anggota 1"><p>Filbert Melvin Ramos Doloksaribu</p></div>
+      <div class="anggota-card"><img src="gambar/anggota2.png" alt="Anggota 2"><p>Daniel Teguh Haholongan Syukur</p></div>
+      <div class="anggota-card"><img src="gambar/anggota3.png" alt="Anggota 3"><p>Grace Scarlet Septiana Tilaar</p></div>
+      <div class="anggota-card"><img src="gambar/anggota4.png" alt="Anggota 4"><p>Joanna Patricia</p></div>
+      <div class="anggota-card"><img src="gambar/anggota5.png" alt="Anggota 5"><p>Daphne Ambrose Rhemrev</p></div>
+      <div class="anggota-card"><img src="gambar/anggota6.png" alt="Anggota 6"><p>Louisa Hitalessy</p></div>
+      <div class="anggota-card"><img src="gambar/anggota7.png" alt="Anggota 7"><p>Dino Padang</p></div>
+      <div class="anggota-card"><img src="gambar/anggota8.png" alt="Anggota 8"><p>Gladys Simarmata</p></div>
+      <div class="anggota-card"><img src="gambar/anggota9.png" alt="Anggota 9"><p>Prassil</p></div>
+      <div class="anggota-card"><img src="gambar/anggota10.png" alt="Anggota 10"><p>Andryv Sinurat</p></div>
+      <div class="anggota-card"><img src="gambar/anggota11.png" alt="Anggota 11"><p>Alvin Padang</p></div>
+      <div class="anggota-card"><img src="gambar/anggota12.png" alt="Anggota 12"><p>Lisa Padang</p></div>
+    </div>
+  </div>
 
-  <footer>
-    <p>© 2025 Pathfinder Immanuel Bogor | Semua Hak Dilindungi</p>
-  </footer>
+  <div id="kontak" class="container page">
+    <h1>Hubungi Kami</h1>
+    <p>Alamat: Jalan Pas Pampres Lap C</p>
+    <p>Email: immanuelbogor@gmail.com</p>
+    <p>Telepon: 0825698547</p>
+  </div>
 
+  <div class="footer">
+    Jalan Pas Pampres Lap C
+  </div>
+
+  <script>
+    function showPage(pageId) {
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(p => {
+        p.style.opacity = '0';
+        setTimeout(() => p.classList.remove('active'), 300);
+      });
+      const activePage = document.getElementById(pageId);
+      setTimeout(() => {
+        activePage.classList.add('active');
+        activePage.style.opacity = '1';
+      }, 350);
+    }
+
+    function toggleSubnav() {
+      const subnav = document.getElementById('subnav');
+      subnav.style.display = (subnav.style.display === 'block') ? 'none' : 'block';
+    }
+  </script>
 </body>
 </html>
